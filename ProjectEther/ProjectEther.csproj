@@ -42,6 +42,52 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Data\assetUI\bg.jpg" />
+    <Content Include="Data\assetUI\ButtonAndText-01.jpg" />
+    <Content Include="Data\assetUI\comingSoonObj-01.jpg" />
+    <Content Include="Data\assetUI\dynamoThumb.jpg" />
+    <Content Include="Data\assetUI\home.jpg" />
+    <Content Include="Data\assetUI\lumixText-01.jpg" />
+    <Content Include="Data\assetUI\lumixTrace.png" />
+    <Content Include="Data\Models\Dynamo\dynamoCase.mdl" />
+    <Content Include="Data\assetUI\bgUI.mdl" />
+    <Content Include="Data\assetUI\logo.mdl" />
+    <Content Include="Data\assetUI\cmdList.mdl" />
+    <Content Include="Data\assetUI\breakdownBtn.mdl" />
+    <Content Include="Data\assetUI\reassembleBtn.mdl" />
+    <Content Include="Data\Models\Dynamo\dynamoCaseL.mdl" />
+    <Content Include="Data\Models\Dynamo\dynamoCaseR.mdl" />
+    <Content Include="Data\Models\Dynamo\Engine.mdl" />
+    <Content Include="Data\Models\Dynamo\Fan.mdl" />
+    <Content Include="Data\Models\Dynamo\Pipe.mdl" />
+    <Content Include="Data\Models\Dynamo\brush.mdl" />
+    <Content Include="Data\Models\Dynamo\holder.mdl" />
+    <Content Include="Data\assetUI\back.mdl" />
+    <Content Include="Data\assetUI\browseObj.mdl" />
+    <Content Include="Data\assetUI\About.mdl" />
+    <Content Include="Data\assetUI\Exit.mdl" />
+    <Content Include="Data\assetUI\DynamoBtn.mdl" />
+    <Content Include="Data\assetUI\BatteryButton.mdl" />
+    <Content Include="Data\assetUI\CameraBtn.mdl" />
+    <Content Include="Data\assetUI\dynamoText.mdl" />
+    <Content Include="Data\assetUI\spawn.mdl" />
+    <Content Include="Data\assetUI\dynamoThumb.mdl" />
+    <Content Include="Data\Models\Lumix\CameraLumix.mdl" />
+    <Content Include="Data\Models\Lumix\BodyBottom.mdl" />
+    <Content Include="Data\Models\Lumix\BodyTop.mdl" />
+    <Content Include="Data\Models\Lumix\flash.mdl" />
+    <Content Include="Data\Models\Lumix\lensS.mdl" />
+    <Content Include="Data\Models\Lumix\lensL.mdl" />
+    <Content Include="Data\Models\Lumix\lensM.mdl" />
+    <Content Include="Data\Models\Lumix\imageSensor.mdl" />
+    <Content Include="Data\Models\Lumix\button.mdl" />
+    <Content Include="Data\Models\Lumix\lcdHolder.mdl" />
+    <Content Include="Data\Models\Lumix\LCD.mdl" />
+    <Content Include="Data\assetUI\lumixText.mdl" />
+    <Content Include="Data\assetUI\lumixThumb.mdl" />
+    <Content Include="Data\Models\Lumix\pcb.mdl" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +100,10 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Models\Dynamo\dynamoTexture.jpg" />
+    <Content Include="Data\Models\Lumix\LumixTexture-01.jpg" />
+    <Content Include="Data\Models\Lumix\pcbTexture-01.jpg" />
+    <Content Include="Data\Textures\Crosshair.png" />
     <Content Include="Data\Textures\Earth.jpg" />
     <Content Include="Data\Textures\License.txt" />
     <Content Include="Data\Textures\Mars.jpg" />
