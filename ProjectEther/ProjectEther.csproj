@@ -88,6 +88,24 @@
     <Content Include="Data\assetUI\lumixText.mdl" />
     <Content Include="Data\assetUI\lumixThumb.mdl" />
     <Content Include="Data\Models\Lumix\pcb.mdl" />
+    <Content Include="Data\Models\Lumix\tutupLensa-01-01.jpg" />
+    <Content Include="Data\Models\Lumix\tutupLensa-01.jpg" />
+    <Content Include="Data\Models\Lumix\tutupLensa.mdl" />
+    <Content Include="Data\Models\Lumix\Armature.ani" />
+    <Content Include="Data\Models\Lumix\Light2.mdl" />
+    <Content Include="Data\Models\Lumix\light2.ani" />
+    <Content Include="Data\Models\Dynamo\dynamoCaseLBreakdown.ani" />
+    <Content Include="Data\Models\Dynamo\dynamoCaseRBreakdown.ani" />
+    <Content Include="Data\Models\Dynamo\pipeBreakdown.ani" />
+    <Content Include="Data\Models\Dynamo\fanBreakdown.ani" />
+    <Content Include="Data\Models\Dynamo\dynamoCaseLReAssemble.ani" />
+    <Content Include="Data\Models\Dynamo\holderBreakdown.ani" />
+    <Content Include="Data\Models\Dynamo\brushBreakdown.ani" />
+    <Content Include="Data\Models\Dynamo\dynamoCaseRReAssemble.ani" />
+    <Content Include="Data\Models\Dynamo\pipeReAssemble.ani" />
+    <Content Include="Data\Models\Dynamo\fanReAssemble.ani" />
+    <Content Include="Data\Models\Dynamo\holderReAssemble.ani" />
+    <Content Include="Data\Models\Dynamo\brushReAssemble.ani" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>

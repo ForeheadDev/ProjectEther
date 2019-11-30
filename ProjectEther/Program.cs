@@ -37,6 +37,32 @@ namespace ProjectEther
         Node LumixNode;
         Node UINode;
 
+        AnimationController DCLanim; // dynamo case left anim
+        AnimationController DCRanim; // dyanamo case Right anim
+        AnimationController pipeanim;
+        AnimationController fananim;
+        AnimationController holderanim;
+        AnimationController brushanim;
+
+        //AnimationController anim;
+        //AnimationController anim2;
+
+        const String DCLtextBDCmd = "//Models//Dynamo//dynamoCaseLBreakdown.ani"; // Dynamo case left text breakdown command
+        const String DCRtextBDCmd = "//Models//Dynamo//dynamoCaseRBreakdown.ani";
+        const String pipetextBDCmd = "//Models//Dynamo//pipeBreakdown.ani";
+        const String fantextBDCmd = "//Models//Dynamo//fanBreakdown.ani";
+        const String holdertextBDCmd = "//Models//Dynamo//holderBreakdown.ani";
+        const String brushtextBDCmd = "//Models//Dynamo//brushBreakdown.ani";
+        //const String light2Anim = "//Models//Lumix//light2.ani";
+        //const String tutupLensAnim = "//Models//Lumix//Armature.ani";
+
+        const String DCLtextRACmd = "//Models//Dynamo//dynamoCaseLReAssemble.ani";
+        const String DCRtextRACmd = "//Models//Dynamo//dynamoCaseRReAssemble.ani";
+        const String pipetextRACmd = "//Models//Dynamo//pipeReAssemble.ani";
+        const String fantextRACmd = "//Models//Dynamo//fanReAssemble.ani";
+        const String holdertextRACmd = "//Models//Dynamo//holderReAssemble.ani";
+        const String brushtextRACmd = "//Models//Dynamo//brushReAssemble.ani";
+
         bool inBrowseObj = false;
 
         bool inDynamoSpawn = false;
@@ -82,15 +108,16 @@ namespace ProjectEther
             
             
             //Manipulation a Node
-            DynamoNode.Position = new Vector3(0, 0, 1.5f); //1.5m away
-            DynamoNode.SetScale(0.05f);
-            //DynamoNode.Rotation = new Quaternion(0, 0, 0);
+            //DynamoNode.Position = new Vector3(0, -0.1f, 1.5f); //1.5m away
+            DynamoNode.Position = new Vector3(0.3f, 0, 2.5f); //1.5m away
+            DynamoNode.SetScale(0.1f);
+            //DynamoNode.Rotation = new Quaternion(0, 90, 90);
 
-            LumixNode.Position = new Vector3(0, 0, 1.5f);
-            LumixNode.SetScale(0.05f);
+            LumixNode.Position = new Vector3(0.3f, 0, 2.5f);
+            LumixNode.SetScale(0.1f);
 
-            UINode.Position = new Vector3(-0.1f, 0, 1f);
-            UINode.SetScale(0.03f);
+            UINode.Position = new Vector3(-0.1f, 0, 2f);
+            UINode.SetScale(0.1f);
             UINode.Rotation = new Quaternion(0, 60, 0);
 
             // Scene has a lot of pre-configured components, such as Cameras (eyes), Lights, etc.
@@ -100,22 +127,28 @@ namespace ProjectEther
             //Crearing dynamo case
             var dynamoCaseNode = DynamoNode.CreateChild();
             dynamoCaseNode.Name = "dynamoCaseNode";
+            /*
             var dynamo = dynamoCaseNode.CreateComponent<StaticModel>();
             dynamo.Model = ResourceCache.GetModel(@"Data\Models\Dynamo\dynamoCase.mdl");
             dynamo.Material = Material.FromImage(@"Data\Models\Dynamo\dynamoTexture.jpg");
+            */
 
             //Creating dynamo component
             var dynamoCaseLNode = DynamoNode.CreateChild();
             dynamoCaseLNode.Name = "dynamoLNode";
-            var dynamoCaseL = dynamoCaseLNode.CreateComponent<StaticModel>();
+            var dynamoCaseL = dynamoCaseLNode.CreateComponent<AnimatedModel>();
             dynamoCaseL.Model = ResourceCache.GetModel(@"Data\Models\Dynamo\dynamoCaseL.mdl");
             dynamoCaseL.Material = Material.FromImage(@"Data\Models\Dynamo\dynamoTexture.jpg");
 
+            DCLanim = dynamoCaseLNode.CreateComponent<AnimationController>();
+
             var dynamoCaseRNode = DynamoNode.CreateChild();
             dynamoCaseRNode.Name = "dynamoRNode";
-            var dynamoCaseR = dynamoCaseRNode.CreateComponent<StaticModel>();
+            var dynamoCaseR = dynamoCaseRNode.CreateComponent<AnimatedModel>();
             dynamoCaseR.Model = ResourceCache.GetModel(@"Data\Models\Dynamo\dynamoCaseR.mdl");
             dynamoCaseR.Material = Material.FromImage(@"Data\Models\Dynamo\dynamoTexture.jpg");
+
+            DCRanim = dynamoCaseRNode.CreateComponent<AnimationController>();
 
             var dynamoEngineNode = DynamoNode.CreateChild();
             dynamoEngineNode.Name = "dynamoEngineNode";
@@ -125,27 +158,36 @@ namespace ProjectEther
 
             var dynamoFanNode = DynamoNode.CreateChild();
             dynamoFanNode.Name = "dynamoFanNode";
-            var dynamoFan = dynamoFanNode.CreateComponent<StaticModel>();
+            var dynamoFan = dynamoFanNode.CreateComponent<AnimatedModel>();
             dynamoFan.Model = ResourceCache.GetModel(@"Data\Models\Dynamo\Fan.mdl");
             dynamoFan.Material = Material.FromImage(@"Data\Models\Dynamo\dynamoTexture.jpg");
 
+            fananim = dynamoFanNode.CreateComponent<AnimationController>();
+            
+
             var dynamoPipeNode = DynamoNode.CreateChild();
             dynamoPipeNode.Name = "dynamoPipeNode";
-            var dynamoPipe = dynamoPipeNode.CreateComponent<StaticModel>();
+            var dynamoPipe = dynamoPipeNode.CreateComponent<AnimatedModel>();
             dynamoPipe.Model = ResourceCache.GetModel(@"Data\Models\Dynamo\Pipe.mdl");
             dynamoPipe.Material = Material.FromImage(@"Data\Models\Dynamo\dynamoTexture.jpg");
 
+            pipeanim = dynamoPipeNode.CreateComponent<AnimationController>();
+
             var dynamoBrushNode = DynamoNode.CreateChild();
             dynamoBrushNode.Name = "dynamoBrushNode";
-            var dynamoBrush = dynamoBrushNode.CreateComponent<StaticModel>();
+            var dynamoBrush = dynamoBrushNode.CreateComponent<AnimatedModel>();
             dynamoBrush.Model = ResourceCache.GetModel(@"Data\Models\Dynamo\brush.mdl");
             dynamoBrush.Material = Material.FromImage(@"Data\Models\Dynamo\dynamoTexture.jpg");
 
+            brushanim = dynamoBrushNode.CreateComponent<AnimationController>();
+
             var dynamoHolderNode = DynamoNode.CreateChild();
             dynamoHolderNode.Name = "dynamoHolderNode";
-            var dynamoHolder = dynamoHolderNode.CreateComponent<StaticModel>();
+            var dynamoHolder = dynamoHolderNode.CreateComponent<AnimatedModel>();
             dynamoHolder.Model = ResourceCache.GetModel(@"Data\Models\Dynamo\holder.mdl");
             dynamoHolder.Material = Material.FromImage(@"Data\Models\Dynamo\dynamoTexture.jpg");
+
+            holderanim = dynamoHolderNode.CreateComponent<AnimationController>();
 
             // trun off unvisible model
             dynamoCaseNode.Enabled = false;
@@ -230,6 +272,23 @@ namespace ProjectEther
             pcbLumix.Model = ResourceCache.GetModel(@"Data\Models\Lumix\pcb.mdl");
             pcbLumix.Material = Material.FromImage(@"Data\Models\Lumix\pcbTexture-01.jpg");
 
+            /*
+            var light2Node = LumixNode.CreateChild();
+            light2Node.Name = "light2Node";
+            var light2 = light2Node.CreateComponent<AnimatedModel>();
+            light2.Model = ResourceCache.GetModel(@"Data\Models\Lumix\light2.mdl");
+            light2.Material = Material.FromImage(@"Data\Models\Lumix\LumixTexture-01.jpg");
+
+            var tutupLensNode = LumixNode.CreateChild();
+            tutupLensNode.Name = "tutupLensNode";
+            var tutupLens = tutupLensNode.CreateComponent<AnimatedModel>();
+            tutupLens.Model = ResourceCache.GetModel(@"Data\Models\Lumix\tutupLensa.mdl");
+            light2.Material = Material.FromImage(@"Data\Models\Lumix\tutupLensa-01.jpg");
+
+            anim = light2Node.CreateComponent<AnimationController>();
+            anim2 = tutupLensNode.CreateComponent<AnimationController>();
+            */
+
             //enable unvisible lumix model
             lumixCameraNode.Enabled = false;
             bodyBottomNode.Enabled = false;
@@ -243,6 +302,7 @@ namespace ProjectEther
             lcdHolderNode.Enabled = false;
             LCDLumixNode.Enabled = false;
             pcbLumixNode.Enabled = false;
+           
 
             //UI background
             var bgUINode = UINode.CreateChild(); //0
@@ -446,7 +506,15 @@ namespace ProjectEther
                 UINode.GetChild(12).Enabled = false;
                 UINode.GetChild(13).Enabled = false;
                 UINode.GetChild(14).Enabled = false;
-                DynamoNode.GetChild(0).Enabled = true;
+
+                DynamoNode.GetChild(1).Enabled = true;
+                DynamoNode.GetChild(2).Enabled = true;
+                DynamoNode.GetChild(3).Enabled = true;
+                DynamoNode.GetChild(4).Enabled = true;
+                DynamoNode.GetChild(5).Enabled = true;
+                DynamoNode.GetChild(6).Enabled = true;
+                DynamoNode.GetChild(7).Enabled = true;
+
                 toDynamo = true;
                 inDynamoSpawn = false;
                 inDynamoCmd = true;
@@ -460,6 +528,11 @@ namespace ProjectEther
                 UINode.GetChild(15).Enabled = false;
                 UINode.GetChild(16).Enabled = false;              
                 LumixNode.GetChild(0).Enabled = true;
+
+                /*
+                anim.Play(light2Anim, 1, false, 0f);
+                anim2.Play(tutupLensAnim, 1, false, 0f);
+                */
                 toCamera = true;
                 inCameraSpawn = false;
                 inCameraCmd = true;
@@ -469,26 +542,43 @@ namespace ProjectEther
                 
                 if (result != null && result.Value.Node.Name == "breakdownBtnNode" && toDynamo == true )
             {
-                DynamoNode.GetChild(0).Enabled = false;
-                DynamoNode.GetChild(1).Enabled = true;
-                DynamoNode.GetChild(2).Enabled = true;
-                DynamoNode.GetChild(3).Enabled = true;
-                DynamoNode.GetChild(4).Enabled = true;
-                DynamoNode.GetChild(5).Enabled = true;
-                DynamoNode.GetChild(6).Enabled = true;
-                DynamoNode.GetChild(7).Enabled = true;
-            }else if(result != null && result.Value.Node.Name == "reassembleBtnNode" && toDynamo ==true)
-            {
-                DynamoNode.GetChild(0).Enabled = true;
-                DynamoNode.GetChild(1).Enabled = false;
-                DynamoNode.GetChild(2).Enabled = false;
-                DynamoNode.GetChild(3).Enabled = false;
-                DynamoNode.GetChild(4).Enabled = false;
-                DynamoNode.GetChild(5).Enabled = false;
-                DynamoNode.GetChild(6).Enabled = false;
-                DynamoNode.GetChild(7).Enabled = false;
 
-            }else if (result != null && result.Value.Node.Name == "breakdownBtnNode" && toCamera == true)
+                DCLanim.Play(DCLtextBDCmd, 1, false, 0f);
+                DCRanim.Play(DCRtextBDCmd, 1, false, 0f);
+                pipeanim.Play(pipetextBDCmd, 1, false, 0f);
+                fananim.Play(fantextBDCmd, 1, false, 0f);
+                holderanim.Play(holdertextBDCmd, 1, false, 0f);
+                brushanim.Play(brushtextBDCmd, 1, false, 0f);
+
+                DCLanim.Stop(DCLtextRACmd, 0f);
+                DCRanim.Stop(DCRtextRACmd, 0f);
+                pipeanim.Stop(pipetextRACmd, 0f);
+                fananim.Stop(fantextRACmd, 0f);
+                holderanim.Stop(holdertextRACmd, 0f);
+                brushanim.Stop(brushtextRACmd, 0f);
+
+
+            }
+            else if(result != null && result.Value.Node.Name == "reassembleBtnNode" && toDynamo ==true)
+            {
+
+                DCLanim.Play(DCLtextRACmd, 1, false, 0f);
+                DCRanim.Play(DCRtextRACmd, 1, false, 0f);
+                pipeanim.Play(pipetextRACmd, 1, false, 0f);
+                fananim.Play(fantextRACmd, 1, false, 0f);
+                holderanim.Play(holdertextRACmd, 1, false, 0f);
+                brushanim.Play(brushtextRACmd, 1, false, 0f);
+
+                DCLanim.Stop(DCLtextBDCmd,0f);
+                DCRanim.Stop(DCRtextBDCmd, 0f);
+                pipeanim.Stop(pipetextBDCmd, 0f);
+                fananim.Stop(fantextBDCmd, 0f);
+                holderanim.Stop(holdertextBDCmd, 0f);
+                brushanim.Stop(brushtextBDCmd, 0f);
+
+
+            }
+            else if (result != null && result.Value.Node.Name == "breakdownBtnNode" && toCamera == true)
             {
                 LumixNode.GetChild(0).Enabled = false;
                 LumixNode.GetChild(1).Enabled = true;
@@ -502,6 +592,8 @@ namespace ProjectEther
                 LumixNode.GetChild(9).Enabled = true;
                 LumixNode.GetChild(10).Enabled = true;
                 LumixNode.GetChild(11).Enabled = true;
+
+                
             }
             else if(result != null && result.Value.Node.Name == "reassembleBtnNode" && toCamera ==true)
             {
@@ -643,6 +735,7 @@ namespace ProjectEther
             if (result != null && result.Value.Node.Name == "backBtnNode" && inDynamoCmd == true)
             {
                
+                // enabled unwanted obj
                 UINode.GetChild(2).Enabled = false;
                 UINode.GetChild(10).Enabled = false;
                 UINode.GetChild(11).Enabled = false;
@@ -655,7 +748,6 @@ namespace ProjectEther
                 UINode.GetChild(13).Enabled = true;
                 UINode.GetChild(14).Enabled = true;
                
-                DynamoNode.GetChild(0).Enabled = false;
                 DynamoNode.GetChild(1).Enabled = false;
                 DynamoNode.GetChild(2).Enabled = false;
                 DynamoNode.GetChild(3).Enabled = false;
@@ -663,6 +755,21 @@ namespace ProjectEther
                 DynamoNode.GetChild(5).Enabled = false;
                 DynamoNode.GetChild(6).Enabled = false;
                 DynamoNode.GetChild(7).Enabled = false;
+
+                // stop animation obj before back
+                DCLanim.Stop(DCLtextBDCmd, 0f);
+                DCRanim.Stop(DCRtextBDCmd, 0f);
+                pipeanim.Stop(pipetextBDCmd, 0f);
+                fananim.Stop(fantextBDCmd, 0f);
+                holderanim.Stop(holdertextBDCmd, 0f);
+                brushanim.Stop(brushtextBDCmd, 0f);
+
+                DCLanim.Stop(DCLtextRACmd, 0f);
+                DCRanim.Stop(DCRtextRACmd, 0f);
+                pipeanim.Stop(pipetextRACmd, 0f);
+                fananim.Stop(fantextRACmd, 0f);
+                holderanim.Stop(holdertextRACmd, 0f);
+                brushanim.Stop(brushtextRACmd, 0f);
 
                 //toDynamo = false;
                 //toCamera = false;
